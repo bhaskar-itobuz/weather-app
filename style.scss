@@ -1,0 +1,46 @@
+.weather_container{
+    background-color: blue;
+    height: 100vh;
+    .input_items{
+        width: 70vw;
+        margin: auto;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .input-box{
+        width: 50vw;
+        background-color: blue;
+        margin-top: 10px;
+        font-size: 30px;
+        color: white;
+        border: none;
+        text-align: center;
+    }
+    .output_box{
+        width: 40vw;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+    .weather_description{
+        text-align: center;
+        width: 550px;
+        margin: 0px auto;
+        font-size: 40px;
+        color: white;
+    }
+    .temparature{
+        font-size: 70px;
+        color: white;
+    }
+    .feels_like{
+        width: 200px;
+        opacity: 0.5;
+        margin-top: -20px;
+        font-size: 30px;
+        color: white;
+    }
+    *:focus {
+        outline: none;
+    }
+}
