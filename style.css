@@ -1,6 +1,7 @@
 .weather_container {
   background-color: blue;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 150vh;
 }
 .weather_container .input_items {
   width: 70vw;
@@ -18,17 +19,25 @@
   text-align: center;
 }
 .weather_container .output_box {
-  width: 40vw;
+  font-size: 30px;
+  color: white;
+  width: 60vw;
   justify-content: center;
   align-items: center;
   margin: auto;
 }
 .weather_container .weather_description {
   text-align: center;
-  width: 550px;
   margin: 0px auto;
-  font-size: 40px;
+  font-size: 20px;
   color: white;
+  opacity: 0.8;
+}
+@media (min-width: 768px) {
+  .weather_container .weather_description {
+    width: 550px;
+    font-size: 30px;
+  }
 }
 .weather_container .temparature {
   font-size: 70px;
@@ -36,7 +45,7 @@
 }
 .weather_container .feels_like {
   width: 200px;
-  opacity: 0.5;
+  opacity: 0.8;
   margin-top: -20px;
   font-size: 30px;
   color: white;

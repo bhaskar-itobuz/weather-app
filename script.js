@@ -5,8 +5,6 @@ const img_container = document.getElementsByClassName("image_container")[0];
 const text_container = document.getElementsByClassName("weather_description")[0];
 const temparature_conatiner = document.getElementsByClassName("temparature")[0];
 const feelslike_conatiner = document.getElementsByClassName("feels_like")[0];
-let errorcheck = 0;
-console.log(api);
 let current_location = "delhi";
 function match() {
     img_container.innerHTML = "";
@@ -28,57 +26,58 @@ function match() {
             const temparr = wea1.condition;
             arr[1] = temparr.text;
             arr[2] = wea1.temp_c;
-            console.log(arr);
             if (arr[1] === "Mist") {
                 locationAt.value = num;
-                const complete_img = document.createElement("img");
-                complete_img.src = "images/snowy-6.svg";
-                complete_img.style.width = '400px';
-                img_container.appendChild(complete_img);
+                const weather_img = document.createElement("img");
+                weather_img.src = "images/snowy-6.svg";
+                weather_img.style.width = '400px';
+                img_container.appendChild(weather_img);
                 addelement();
             }
             else if (arr[1] === "Partly Cloudy") {
                 locationAt.value = num;
-                const complete_img = document.createElement("img");
-                complete_img.src = "images/thunder.svg";
-                complete_img.style.width = '400px';
-                img_container.appendChild(complete_img);
+                const weather_img = document.createElement("img");
+                weather_img.src = "images/thunder.svg";
+                weather_img.style.width = '400px';
+                img_container.appendChild(weather_img);
                 addelement();
             }
             else if (arr[1] === "Sunny") {
-                const complete_img = document.createElement("img");
+                const weather_img = document.createElement("img");
                 locationAt.value = num;
-                complete_img.src = "images/cloudy-day-3.svg";
-                complete_img.style.width = '400px';
-                img_container.appendChild(complete_img);
+                weather_img.src = "images/cloudy-day-3.svg";
+                weather_img.style.width = '400px';
+                img_container.appendChild(weather_img);
                 addelement();
             }
             else if (arr[1] === "Clear") {
                 locationAt.value = num;
-                const complete_img = document.createElement("img");
-                complete_img.src = "images/day.svg";
-                complete_img.style.width = '400px';
-                img_container.appendChild(complete_img);
+                const weather_img = document.createElement("img");
+                weather_img.src = "images/day.svg";
+                weather_img.style.width = '400px';
+                img_container.appendChild(weather_img);
                 addelement();
             }
             else {
                 locationAt.value = num;
-                const complete_img = document.createElement("img");
-                complete_img.src = "images/day.svg";
-                complete_img.style.width = '400px';
-                img_container.appendChild(complete_img);
+                const weather_img = document.createElement("img");
+                weather_img.src = "images/day.svg";
+                weather_img.style.width = '400px';
+                img_container.appendChild(weather_img);
                 addelement();
             }
         }
         catch (err) {
-            alert("enter valid location");
+            const textNode = document.createElement('p');
+            textNode.textContent = "Please Enter Valid Location";
+            text_container.appendChild(textNode);
         }
     }
     weather();
 }
 function addelement() {
     const textNode = document.createElement('p');
-    textNode.textContent = "Make The Most Of This Nice Weather That I generate For You";
+    textNode.textContent = "Make The Most Of This Nice Weather That I generate For You. or else.";
     text_container.appendChild(textNode);
     const temparature = document.createElement('p');
     const temp = arr[2];
