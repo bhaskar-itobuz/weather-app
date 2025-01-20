@@ -6,12 +6,19 @@ const text_container = document.getElementsByClassName("weather_description")[0]
 const temparature_conatiner = document.getElementsByClassName("temparature")[0];
 const feelslike_conatiner = document.getElementsByClassName("feels_like")[0];
 let current_location = "delhi";
+
 function match() {
     img_container.innerHTML = "";
     text_container.innerHTML = "";
     temparature_conatiner.innerHTML = "";
     feelslike_conatiner.innerHTML = "";
     new_location = locationAt.value;
+    const trim_location = new_location.trim();
+    new_location = trim_location;
+    if(new_location === ""){
+        locationAt.value="";
+        return;
+    }
     let result = api.replace(current_location, new_location);
     current_location = new_location;
     api = result;
@@ -27,44 +34,19 @@ function match() {
             arr[1] = tempArr.text;
             arr[2] = weather_data.temp_c;
             if (arr[1] === "Mist") {
-                locationAt.value = location_name;
-                const weather_img = document.createElement("img");
-                weather_img.src = "images/snowy-6.svg";
-                weather_img.style.width = '400px';
-                img_container.appendChild(weather_img);
-                addElement();
+                addElement(location_name, "images/snowy-6.svg");
             }
             else if (arr[1] === "Partly Cloudy") {
-                locationAt.value = location_name;
-                const weather_img = document.createElement("img");
-                weather_img.src = "images/thunder.svg";
-                weather_img.style.width = '400px';
-                img_container.appendChild(weather_img);
-                addElement();
+                addElement(location_name, "images/thunder.svg");
             }
             else if (arr[1] === "Sunny") {
-                const weather_img = document.createElement("img");
-                locationAt.value = location_name;
-                weather_img.src = "images/cloudy-day-3.svg";
-                weather_img.style.width = '400px';
-                img_container.appendChild(weather_img);
-                addElement();
+                addElement(location_name, "images/cloudy-day-3.svg");
             }
             else if (arr[1] === "Clear") {
-                locationAt.value = location_name;
-                const weather_img = document.createElement("img");
-                weather_img.src = "images/day.svg";
-                weather_img.style.width = '400px';
-                img_container.appendChild(weather_img);
-                addElement();
+                addElement(location_name, "images/day.svg");
             }
             else {
-                locationAt.value = location_name;
-                const weather_img = document.createElement("img");
-                weather_img.src = "images/day.svg";
-                weather_img.style.width = '400px';
-                img_container.appendChild(weather_img);
-                addElement();
+                addElement(location_name, "images/day.svg");
             }
         }
         catch (err) {
@@ -75,17 +57,22 @@ function match() {
     }
     weather();
 }
-function addElement() {
+
+function addElement(location_name, weather_path) {
+    locationAt.value = location_name;
+    const weather_img = document.createElement("img");
+    weather_img.src = weather_path;
+    weather_img.style.width = '400px';
+    img_container.appendChild(weather_img);
     const textNode = document.createElement('p');
     textNode.textContent = "Make The Most Of This Nice Weather That I generate For You. or else.";
     text_container.appendChild(textNode);
     const temparature = document.createElement('p');
     const temp = arr[2];
-    console.log(temp);
-    temparature.textContent = temp +"º";
+    temparature.textContent = temp + "º";
     temparature_conatiner.appendChild(temparature);
     const feelslike = document.createElement('p');
     const fel = arr[0];
-    feelslike.textContent = "Feels " + fel +"º";
+    feelslike.textContent = "Feels " + fel + "º";
     feelslike_conatiner.appendChild(feelslike);
 }
