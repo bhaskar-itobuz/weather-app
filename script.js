@@ -20,51 +20,51 @@ function match() {
         try {
             const ans = await fetch(api);
             const data = await ans.json();
-            let num = data.location.name;
-            const wea1 = data.current;
-            arr[0] = wea1.feelslike_c;
-            const temparr = wea1.condition;
-            arr[1] = temparr.text;
-            arr[2] = wea1.temp_c;
+            let location_name = data.location.name;
+            const weather_data = data.current;
+            arr[0] = weather_data.feelslike_c;
+            const tempArr = weather_data.condition;
+            arr[1] = tempArr.text;
+            arr[2] = weather_data.temp_c;
             if (arr[1] === "Mist") {
-                locationAt.value = num;
+                locationAt.value = location_name;
                 const weather_img = document.createElement("img");
                 weather_img.src = "images/snowy-6.svg";
                 weather_img.style.width = '400px';
                 img_container.appendChild(weather_img);
-                addelement();
+                addElement();
             }
             else if (arr[1] === "Partly Cloudy") {
-                locationAt.value = num;
+                locationAt.value = location_name;
                 const weather_img = document.createElement("img");
                 weather_img.src = "images/thunder.svg";
                 weather_img.style.width = '400px';
                 img_container.appendChild(weather_img);
-                addelement();
+                addElement();
             }
             else if (arr[1] === "Sunny") {
                 const weather_img = document.createElement("img");
-                locationAt.value = num;
+                locationAt.value = location_name;
                 weather_img.src = "images/cloudy-day-3.svg";
                 weather_img.style.width = '400px';
                 img_container.appendChild(weather_img);
-                addelement();
+                addElement();
             }
             else if (arr[1] === "Clear") {
-                locationAt.value = num;
+                locationAt.value = location_name;
                 const weather_img = document.createElement("img");
                 weather_img.src = "images/day.svg";
                 weather_img.style.width = '400px';
                 img_container.appendChild(weather_img);
-                addelement();
+                addElement();
             }
             else {
-                locationAt.value = num;
+                locationAt.value = location_name;
                 const weather_img = document.createElement("img");
                 weather_img.src = "images/day.svg";
                 weather_img.style.width = '400px';
                 img_container.appendChild(weather_img);
-                addelement();
+                addElement();
             }
         }
         catch (err) {
@@ -75,7 +75,7 @@ function match() {
     }
     weather();
 }
-function addelement() {
+function addElement() {
     const textNode = document.createElement('p');
     textNode.textContent = "Make The Most Of This Nice Weather That I generate For You. or else.";
     text_container.appendChild(textNode);
